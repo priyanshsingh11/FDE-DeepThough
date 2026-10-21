@@ -1,0 +1,292 @@
+{
+  "verified": false,
+  "notice": "Placeholder stage content from the spec's working labels. Replace with the exact DeepThought stage names/guidance and transcript-derived patterns (run scripts/analyze_transcripts.py).",
+  "outcomes": [
+    {
+      "value": "meeting_booked",
+      "label": "Meeting booked"
+    },
+    {
+      "value": "follow_up_required",
+      "label": "Follow-up required"
+    },
+    {
+      "value": "callback_scheduled",
+      "label": "Callback scheduled"
+    },
+    {
+      "value": "not_interested",
+      "label": "Not interested"
+    },
+    {
+      "value": "no_answer",
+      "label": "No answer / unavailable"
+    },
+    {
+      "value": "wrong_contact",
+      "label": "Wrong contact"
+    },
+    {
+      "value": "other",
+      "label": "Other"
+    }
+  ],
+  "stages": [
+    {
+      "stage_number": 1,
+      "name": "Opening",
+      "purpose": "Start the call: greet the prospect and identify yourself.",
+      "guidance": [
+        "Confirm you have the right person",
+        "Keep it short and calm"
+      ],
+      "common_responses": [],
+      "result_options": [
+        {
+          "value": "right_person",
+          "label": "Right person, engaged"
+        },
+        {
+          "value": "gatekeeper",
+          "label": "Gatekeeper / someone else"
+        },
+        {
+          "value": "not_available",
+          "label": "Not available"
+        },
+        {
+          "value": "hung_up",
+          "label": "Hung up / declined"
+        },
+        {
+          "value": "other",
+          "label": "Other"
+        }
+      ]
+    },
+    {
+      "stage_number": 2,
+      "name": "Purpose",
+      "purpose": "State briefly why you are calling.",
+      "guidance": [
+        "One or two sentences on why you called",
+        "Pause and listen to the first reaction"
+      ],
+      "common_responses": [],
+      "result_options": [
+        {
+          "value": "curious",
+          "label": "Curious / open"
+        },
+        {
+          "value": "asked_question",
+          "label": "Asked a question"
+        },
+        {
+          "value": "not_interested",
+          "label": "Not interested"
+        },
+        {
+          "value": "confused",
+          "label": "Confused about who we are"
+        },
+        {
+          "value": "other",
+          "label": "Other"
+        }
+      ]
+    },
+    {
+      "stage_number": 3,
+      "name": "Permission",
+      "purpose": "Check whether the prospect can talk now.",
+      "guidance": [
+        "Ask if now is a good time",
+        "If not, agree a specific callback time"
+      ],
+      "common_responses": [],
+      "result_options": [
+        {
+          "value": "agreed_to_talk",
+          "label": "Agreed to talk"
+        },
+        {
+          "value": "callback_requested",
+          "label": "Asked for a callback"
+        },
+        {
+          "value": "busy_declined",
+          "label": "Too busy / declined"
+        },
+        {
+          "value": "info_requested",
+          "label": "Asked for info by email"
+        },
+        {
+          "value": "other",
+          "label": "Other"
+        }
+      ]
+    },
+    {
+      "stage_number": 4,
+      "name": "Prospect's business",
+      "purpose": "Understand the prospect's context.",
+      "guidance": [
+        "Ask open questions about how they work today",
+        "Note their terminology"
+      ],
+      "common_responses": [],
+      "result_options": [
+        {
+          "value": "shared_context",
+          "label": "Shared business context"
+        },
+        {
+          "value": "short_answers",
+          "label": "Short / guarded answers"
+        },
+        {
+          "value": "redirected",
+          "label": "Redirected to someone else"
+        },
+        {
+          "value": "disengaged",
+          "label": "Disengaged"
+        },
+        {
+          "value": "other",
+          "label": "Other"
+        }
+      ]
+    },
+    {
+      "stage_number": 5,
+      "name": "Their need, in their words",
+      "purpose": "Capture goals and problems verbatim.",
+      "guidance": [
+        "Capture their exact words in the field below",
+        "Don't paraphrase yet"
+      ],
+      "common_responses": [],
+      "result_options": [
+        {
+          "value": "need_stated",
+          "label": "Stated a clear need"
+        },
+        {
+          "value": "vague_need",
+          "label": "Vague / unsure"
+        },
+        {
+          "value": "no_need",
+          "label": "No need right now"
+        },
+        {
+          "value": "existing_solution",
+          "label": "Happy with current solution"
+        },
+        {
+          "value": "other",
+          "label": "Other"
+        }
+      ]
+    },
+    {
+      "stage_number": 6,
+      "name": "Objection",
+      "purpose": "Understand and acknowledge objections neutrally.",
+      "guidance": [
+        "Ask what is behind the objection before answering",
+        "Record the objection in their words"
+      ],
+      "common_responses": [],
+      "result_options": [
+        {
+          "value": "no_objection",
+          "label": "No objection"
+        },
+        {
+          "value": "price",
+          "label": "Price / budget"
+        },
+        {
+          "value": "timing",
+          "label": "Timing"
+        },
+        {
+          "value": "already_have",
+          "label": "Already have a provider"
+        },
+        {
+          "value": "not_decision_maker",
+          "label": "Not the decision maker"
+        },
+        {
+          "value": "other",
+          "label": "Other"
+        }
+      ]
+    },
+    {
+      "stage_number": 7,
+      "name": "Next step",
+      "purpose": "Agree on a concrete next action.",
+      "guidance": [
+        "Propose a specific next step with a date",
+        "Confirm they agree"
+      ],
+      "common_responses": [],
+      "result_options": [
+        {
+          "value": "meeting_booked",
+          "label": "Meeting booked"
+        },
+        {
+          "value": "callback_agreed",
+          "label": "Callback agreed"
+        },
+        {
+          "value": "send_info",
+          "label": "Send information"
+        },
+        {
+          "value": "no_next_step",
+          "label": "No next step agreed"
+        },
+        {
+          "value": "other",
+          "label": "Other"
+        }
+      ]
+    },
+    {
+      "stage_number": 8,
+      "name": "Close",
+      "purpose": "Wrap up and record the final outcome.",
+      "guidance": [
+        "Summarise what was agreed",
+        "Thank them for their time"
+      ],
+      "common_responses": [],
+      "result_options": [
+        {
+          "value": "closed_positive",
+          "label": "Positive close"
+        },
+        {
+          "value": "closed_neutral",
+          "label": "Neutral close"
+        },
+        {
+          "value": "closed_negative",
+          "label": "Negative close"
+        },
+        {
+          "value": "other",
+          "label": "Other"
+        }
+      ]
+    }
+  ]
+}
