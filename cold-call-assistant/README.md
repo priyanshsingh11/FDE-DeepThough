@@ -43,7 +43,7 @@ Put the project URL and **service-role key** only in Render's env.
 ```bash
 python -m venv .venv && source .venv/bin/activate
 pip install -r requirements.txt
-cp ../.env.example .env   # fill in; with no Supabase vars it uses an in-memory store (dev only)
+# env is read from the universal ../.env automatically; with no Supabase vars it uses an in-memory store (dev only)
 uvicorn app.main:app --reload
 ```
 ### Frontend (`frontend/`)
@@ -52,15 +52,15 @@ cp .env.local.example .env.local
 npm install && npm run dev
 ```
 ### Env vars (names only)
-Backend: `SUPABASE_URL`, `SUPABASE_SERVICE_ROLE_KEY`, `ALLOWED_ORIGINS` (exact Vercel origin, comma-separated), `LLM_API_KEY`, `LLM_MODEL` (script only).
-Frontend: `NEXT_PUBLIC_API_BASE_URL`.
+One **universal `.env`** at the project root (`cold-call-assistant/.env`) holds everything, and the backend reads it automatically (a local `backend/.env` still works and overrides). The frontend mirrors `NEXT_PUBLIC_API_BASE_URL` in `frontend/.env.local`.
+Vars: `SUPABASE_URL`, `SUPABASE_SERVICE_ROLE_KEY`, `LLM_PROVIDER`, `LLM_API_KEY`, `LLM_MODEL`, `ALLOWED_ORIGINS` (exact Vercel origin, comma-separated), `NEXT_PUBLIC_API_BASE_URL`. Copy `.env.example` → `.env`.
 
 ### Deploy
 Render: use `backend/render.yaml` (root `backend`, start `uvicorn app.main:app --host 0.0.0.0 --port $PORT`).
 Vercel: root `frontend`, set `NEXT_PUBLIC_API_BASE_URL`. Then set `ALLOWED_ORIGINS` on Render to the Vercel URL.
 
 ## LLM use
-- **Provider/model:** Google Gemini via REST, default `gemini-2.0-flash` (set `LLM_MODEL`); prompt version `v1`.
+- **Provider/model:** Groq by default, `llama-3.3-70b-versatile` (set `LLM_PROVIDER`/`LLM_MODEL`); Gemini also supported (`LLM_PROVIDER=gemini`, default `gemini-2.0-flash`). Prompt version `v1`.
 - **Role:** development-time transcript analysis only. It does not run in the deployed app, so the live screen is fast
   and immune to rate limits, and the LLM never controls navigation, saving or closing.
 - **Input/output:** one transcript in → JSON `{last_stage_reached, final_outcome, agreed_next_step, observations[stage, pattern, quote, uncertain]}`.
