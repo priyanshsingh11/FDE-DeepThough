@@ -31,8 +31,24 @@ export default function CallPage() {
 
   useEffect(() => {
     const warn = (e: BeforeUnloadEvent) => { if (dirty.current) e.preventDefault(); };
+    // In-app links (header nav) are client-side navigations, so beforeunload never fires for them.
+    const guardLinks = (e: MouseEvent) => {
+      if (!dirty.current) return;
+      const a = (e.target as Element | null)?.closest?.("a[href]");
+      if (!a || (a as HTMLAnchorElement).target === "_blank") return;
+      if (!confirm("You have unsaved changes on this stage. Leave without saving?")) {
+        e.preventDefault();
+        e.stopPropagation();
+      } else {
+        dirty.current = false;
+      }
+    };
     window.addEventListener("beforeunload", warn);
-    return () => window.removeEventListener("beforeunload", warn);
+    document.addEventListener("click", guardLinks, true);
+    return () => {
+      window.removeEventListener("beforeunload", warn);
+      document.removeEventListener("click", guardLinks, true);
+    };
   }, []);
 
   const setDirty = useCallback((d: boolean) => { dirty.current = d; }, []);
